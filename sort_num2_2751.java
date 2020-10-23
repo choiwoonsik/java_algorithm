@@ -7,13 +7,19 @@ public class sort_num2_2751 {
     static int[] arr;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray()[0];
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        StringBuilder str = new StringBuilder();
+
+        int N = Integer.parseInt(st.nextToken());
         arr = new int[N];
-        for (int i = 0; i < N; i++)
-            arr[i] = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray()[0];
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            int n = Integer.parseInt(st.nextToken());
+            arr[i] = n;
+        }
         quick_sort(0, arr.length - 1);
-        for (int i = 0; i < N; i++)
-            System.out.println(arr[i]);
+        Arrays.stream(arr).forEach(s -> str.append(s).append("\n"));
+        System.out.println(str);
     }
     private static void quick_sort(int start, int end)
     {
