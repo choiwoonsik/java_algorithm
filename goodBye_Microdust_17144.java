@@ -69,40 +69,29 @@ public class goodBye_Microdust_17144 {
                 // 청정기 왼쪽 위 내려옴
                 for (int r = Air_r - 1; r >= 0; r--)
                     map[r + 1][0] = map[r][0];
-                if (Air_c == 0)
-                    map[Air_r][0] = -1;
-
                 // 맨 위 왼쪽으로 이동
                 for (int c = 1; c < C; c++)
                     map[0][c - 1] = map[0][c];
-
                 // 맨 오른쪽 위로 이동
                 for (int r = 1; r <= Air_r; r++)
                     map[r - 1][C - 1] = map[r][C - 1];
-
-                // 청정기 오른쪽 밀어냄
-                for (int c = C - 2; c > Air_c; c--)
-                    map[Air_r][c + 1] = map[Air_r][c];
-            } else {
+            }
+            else {
                 // 청정기 왼쪽 아래 올라옴
                 for (int r = Air_r + 1; r < R; r++)
                     map[r - 1][0] = map[r][0];
-                if (Air_c == 0)
-                    map[Air_r][0] = -1;
-
                 // 맨 아래 왼쪽으로 이동
                 for (int c = 1; c < C; c++)
                     map[R - 1][c - 1] = map[R - 1][c];
-
                 // 맨 오른쪽 아래로 이동
                 for (int r = R - 1; r > Air_r; r--)
                     map[r][C - 1] = map[r - 1][C - 1];
-
-                // 청정기 오른쪽 밀어냄
-                for (int c = C - 2; c > Air_c; c--)
-                    map[Air_r][c + 1] = map[Air_r][c];
             }
+            // 청정기 오른쪽 밀어냄
+            for (int c = C - 1; c > Air_c; c--)
+                map[Air_r][c] = map[Air_r][c - 1];
             map[Air_r][Air_c + 1] = 0;
+            map[Air_r][0] = -1;
         }
     }
 
