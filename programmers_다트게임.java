@@ -50,12 +50,9 @@ public class programmers_다트게임 {
             }
         }
         int sum = 0;
-        for (int i = 0; i < dart.length; i++) {
-            System.out.println(dart[i]);
-            sum += dart[i].point;
-        }
+        for (Dart value : dart)
+            sum += value.point;
 
-        System.out.println(sum);
         return sum;
     }
     private static class Dart

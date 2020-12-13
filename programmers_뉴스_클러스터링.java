@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class progrmmers_뉴스_클러스터링 {
+public class programmers_뉴스_클러스터링 {
     public static void main(String[] args)
     {
         //J(A, B)는 두 집합의 교집합 크기를 두 집합의 합집합 크기로 나눈 값
