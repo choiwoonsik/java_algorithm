@@ -86,7 +86,7 @@ public class 구간합구하기_2042 {
     private static long sum(int index, int start, int end, int left, int right) {
         if (start > right || end < left)
             return 0;
-        else if (start >= left && end <= right)
+        else if (left <= start && end <= right)
             return tree[index];
         else {
             int mid = (start+end)/2;
