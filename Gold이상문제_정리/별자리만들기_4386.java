@@ -47,7 +47,7 @@ public class 별자리만들기_4386 {
 				total_span += edge.span;
 			}
 		}
-		System.out.println(String.format("%.2f", total_span));
+		System.out.printf("%.2f", total_span);
 	}
 
 	private static void union(Dot start, Dot end) {
