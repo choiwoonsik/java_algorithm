@@ -35,7 +35,7 @@ public class 구간합구하기_2042 {
         A = new long[N + 1];
         for (int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
-            A[i] = Integer.parseInt(st.nextToken());
+            A[i] = Long.parseLong(st.nextToken());
         }
 
         // 먼저 트리를 만들자
@@ -49,7 +49,7 @@ public class 구간합구하기_2042 {
 
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            int c = Integer.parseInt(st.nextToken());
+            long c = Long.parseLong(st.nextToken());
 
             // 변경
             if (a == 1) {
@@ -61,7 +61,7 @@ public class 구간합구하기_2042 {
             // 구간합
             else if (a == 2) {
                 // 특정 구간의 합을 반환하는 sum함수
-                long ret = sum(1, 1, last, b, c);
+                long ret = sum(1, 1, last, b, (int)c);
                 str.append(ret).append("\n");
             }
         }
