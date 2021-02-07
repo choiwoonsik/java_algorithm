@@ -22,7 +22,7 @@ public class 커피숖2_1275 {
         N = Integer.parseInt(st.nextToken());
         Q = Integer.parseInt(st.nextToken());
 
-        height = (int) Math.ceil(log(N));
+        height = (int) Math.ceil(Math.log10(N)/Math.log10(2));
         last = (int) Math.pow(2, height);
 
         A = new long[N + 1];
@@ -42,14 +42,10 @@ public class 커피숖2_1275 {
             long sum_val = sum(1, 1, last, Math.min(x, y), Math.max(x, y));
             str.append(sum_val).append("\n");
             // 변경
-            update(a, b - A[a], 1, 1, last);
+            update(1, 1, last, a, b - A[a]);
             A[a] = b;
         }
         System.out.print(str);
-    }
-
-    private static double log(int n) {
-        return Math.log10(n)/Math.log10(2);
     }
 
     private static long init(int index, int start, int end) {
@@ -74,7 +70,7 @@ public class 커피숖2_1275 {
         }
     }
 
-    private static void update(int changed_index, long diff, int index, int start, int end)
+    private static void update(int index, int start, int end, int changed_index, long diff)
     {
         if (changed_index > end || changed_index < start)
             return;
@@ -83,8 +79,8 @@ public class 커피숖2_1275 {
 
         if (start != end) {
             int mid = (start + end) / 2;
-            update(changed_index, diff, index*2, start, mid);
-            update(changed_index, diff, index*2+1, mid+1, end);
+            update(index*2, start, mid, changed_index, diff);
+            update(index*2+1, mid+1, end, changed_index, diff);
         }
     }
 }
