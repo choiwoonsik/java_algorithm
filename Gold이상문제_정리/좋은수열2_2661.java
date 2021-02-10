@@ -10,7 +10,6 @@ public class 좋은수열2_2661 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
-
 		str.append("1");
 		backtracking(str);
 	}
