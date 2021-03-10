@@ -7,9 +7,61 @@ import java.io.InputStreamReader;
 public class Main {
 	static int[][] lca;
 	static int[] depth;
+	static int N = 1;
 	public static void main(String[] args) throws IOException {
 
+		Node tree = new Node();
+		tree.n = -1;
+		makeTree(tree);
+
+		preOrder(tree);
+		System.out.println();
+		System.out.println("***");
+		inOrder(tree);
 	}
+
+	private static void makeTree(Node root) {
+		root.left = new Node();
+		root.right = new Node();
+		root.left.n = N++;
+		root.right.n = N++;
+		if (N >= 10)
+			return;
+		makeTree(root.left);
+		makeTree(root.right);
+	}
+
+	private static void preOrder(Node root) {
+		if (root == null) return;
+		visit(root);
+		preOrder(root.left);
+		preOrder(root.right);
+	}
+
+	private static void inOrder(Node root) {
+		if (root == null) return;
+		inOrder(root.left);
+		visit(root);
+		inOrder(root.right);
+	}
+
+	private static void postOrder(Node root) {
+		if (root == null) return;
+		postOrder(root.left);
+		postOrder(root.right);
+		visit(root);
+	}
+
+	private static void visit(Node root) {
+		System.out.print(root.n +" -> ");
+	}
+
+	private static class Node {
+		int n;
+		Node left = null;
+		Node right = null;
+	}
+
 	private static int find_lca(int x, int y)
 	{
 		if (depth[x] > depth[y]) {
