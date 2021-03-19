@@ -33,12 +33,8 @@ public class 회의준비_2610 {
 			dp[u][v] = 1;
 			dp[v][u] = 1;
 
-			if (find(u) != find(v)) {
-				if (u < v)
-					union(u, v);
-				else
-					union(v, u);
-			}
+			if (find(u) != find(v))
+				union(v, u);
 		}
 
 		ArrayList<Integer> list = new ArrayList<>();
@@ -64,18 +60,19 @@ public class 회의준비_2610 {
 
 		HashMap<Integer, pair> map = new HashMap<>();
 		for (int commit = 1; commit < K+1; commit++) {
-			int max = MAX;
+			int max_dist = MAX;
 			for (int i = 1; i < K+1; i++) {
 				if (i == commit) continue;
-				if (max < dp[commit][i] && dp[commit][i] != INF) {
-					max = dp[commit][i];
+				if (dp[commit][i] == INF) continue;
+				if (max_dist < dp[commit][i]) {
+					max_dist = dp[commit][i];
 				}
 			}
 
 			if (!map.containsKey(find(commit))) {
-				map.put(find(commit), new pair(commit, max));
-			} else if (map.get(find(commit)).value > max) {
-				map.put(find(commit), new pair(commit, max));
+				map.put(find(commit), new pair(commit, max_dist));
+			} else if (map.get(find(commit)).value > max_dist) {
+				map.put(find(commit), new pair(commit, max_dist));
 			}
 		}
 
@@ -105,15 +102,3 @@ public class 회의준비_2610 {
 		}
 	}
 }
-/*
-9
-8
-1 2
-2 3
-3 4
-4 5
-4 6
-4 7
-4 8
-4 9
- */
