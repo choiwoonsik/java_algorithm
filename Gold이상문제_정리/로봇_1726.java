@@ -52,19 +52,17 @@ public class 로봇_1726 {
 
             if (now.y == eDot.y && now.x == eDot.x && now.dir == eDot.dir) {
                 ans = Math.min(ans, now.cnt);
-                continue;
+                break;
             }
 
             for (int go = 1; go <= 3; go++) {
                 int ny = now.y + dy[now.dir] * go;
                 int nx = now.x + dx[now.dir] * go;
                 if (ny >= 1 && ny <= H && nx >= 1 && nx <= W) {
-                    if (!visited[ny][nx][now.dir]) {
-                        if (map[ny][nx] == 1)
-                            break;
-                        que.add(new Dot(ny, nx, now.dir, now.cnt + 1));
-                        visited[ny][nx][now.dir] = true;
-                    }
+                    if (visited[ny][nx][now.dir]) continue;
+                    if (map[ny][nx] == 1) break;
+                    que.add(new Dot(ny, nx, now.dir, now.cnt + 1));
+                    visited[ny][nx][now.dir] = true;
                 }
             }
 
@@ -72,9 +70,8 @@ public class 로봇_1726 {
                 if (!visited[now.y][now.x][d] && d != now.dir) {
                     visited[now.y][now.x][d] = true;
                     if (d == reverse(now.dir))
-                        que.add(new Dot(now.y, now.x, d, now.cnt + 2));
-                    else
-                        que.add(new Dot(now.y, now.x, d, now.cnt + 1));
+                        continue;
+                    que.add(new Dot(now.y, now.x, d, now.cnt + 1));
                 }
             }
         }
