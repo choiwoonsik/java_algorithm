@@ -45,12 +45,12 @@ public class 게리멘더링2_17779 {
 	}
 
 	private static void find_part(int x, int y, int d1, int d2) {
+		int part1, part2, part3, part4, part5;
 		make_line(x, y, d1, 0);
 		make_line(x, y, d2, 1);
 		make_line(x+d1, y-d1, d2, 1);
 		make_line(x+d2, y+d2, d1, 0);
 
-		int part1, part2, part3, part4, part5;
 		part1 = sum_to_right(1, x + d1 - 1, 1, y, 1);
 		part2 = sum_to_left(1, x + d2, y + 1, N, 2);
 		part3 = sum_to_right(x + d1, N, 1, y - d1 + d2 - 1, 3);
