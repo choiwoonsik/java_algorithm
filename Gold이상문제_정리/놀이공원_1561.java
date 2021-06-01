@@ -1,5 +1,7 @@
 package Gold이상문제_정리;
 
+import FastCampus_algorithm.BinarySearch;
+
 import java.io.*;
 import java.util.*;
 
@@ -18,17 +20,68 @@ N명의 아이들이 한 줄로 줄을 서서 놀이공원에서 1인승 놀이�
 
 22 5
 1 2 3 4 5
+
+Q. 마지막 학생이 탄 놀이기구 번호는?
+1. 놀이기구가 학생수보다 적다면 -> 학생수 출력
+2. 놀이기구가 더 많다면 이분탐색으로 마지막에 탄 학생의 x분을 구한다
+3. x-1분까지 탄 학생의 수를 구한다
+4. x분에 탄 학생 수를 구한다. 이때 N번 학생이 있으면 해당 기구 출력
  */
 
 public class 놀이공원_1561 {
 	static int N, M;
+	static long left = 1;
+	static long right = 2000000000L * 30;
+	static int[] time;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
+		time = new int[M];
 
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < M; i++)
+			time[i] = Integer.parseInt(st.nextToken());
 
+		if (N <= M)
+			System.out.println(N);
+		else
+			System.out.println(binarySearch());
+	}
+
+	private static int binarySearch() {
+		while (left <= right)
+		{
+			long mid = (left + right) / 2;
+
+			long rided = 0;
+			rided += M;
+			for (int i = 0; i < M; i++)
+				rided += mid / time[i];
+
+			long endN = rided;
+			for (int i = 0; i < M; i++) {
+				if (mid % time[i] == 0)
+					rided--;
+			}
+			long beginN = rided + 1;
+
+			if (N < beginN)
+				right = mid - 1;
+			else if (N > endN)
+				left = mid + 1;
+			else {
+				for (int i = 0; i < M; i++) {
+					if (mid % time[i] == 0) {
+						if (beginN == N)
+							return i + 1;
+						beginN++;
+					}
+				}
+			}
+		}
+		return -1;
 	}
 }
