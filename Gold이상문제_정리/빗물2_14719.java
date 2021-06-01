@@ -9,6 +9,7 @@ import java.io.*;
 
 public class 빗물2_14719 {
 	static int H, W;
+	static Stack<String> stack = new Stack<>();
 	static int[] wall = new int[501];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
