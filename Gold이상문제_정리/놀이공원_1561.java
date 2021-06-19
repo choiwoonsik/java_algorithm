@@ -1,7 +1,5 @@
 package Gold이상문제_정리;
 
-import FastCampus_algorithm.BinarySearch;
-
 import java.io.*;
 import java.util.*;
 
