@@ -10,6 +10,13 @@ import java.io.*;
 11313
 R42TH
 124R6
+
+5 5
+11R2T
+11121
+1E121
+R1115
+222RR
  */
 
 public class 얼음미로_20926 {
@@ -47,46 +54,50 @@ public class 얼음미로_20926 {
 	}
 
 	private static void BFS() {
-		Queue<Dot> queue = new LinkedList<>();
+		PriorityQueue<Dot> queue = new PriorityQueue<>(Comparator.comparingInt(d -> d.t));
 		queue.add(Me);
-		visited[Me.y][Me.x] = true;
 
 		while (!queue.isEmpty()) {
 			Dot now = queue.poll();
 
+			if (visited[now.y][now.x]) continue;
+			visited[now.y][now.x] = true;
+
 			for (int d = 0; d < 4; d++) {
-				int ny = now.y;
-				int nx = now.x;
-				int time = 0;
-				boolean flag = false;
-
-				while (true) {
-					ny += dy[d];
-					nx += dx[d];
-
-					if (isOut(ny, nx)) break;
-					if (visited[ny][nx]) break;
-					if (board[ny][nx] == Hol) break;
-					if (board[ny][nx] == Rock) {
-						flag = true;
-						break;
-					}
-					if (board[ny][nx] == Exit) {
-						Min = Math.min(Min, now.t + time);
-						break;
-					}
-					time += board[ny][nx];
-				}
-
-				ny -= dy[d];
-				nx -= dx[d];
-				visited[ny][nx] = true;
-				if (flag) {
-					if (ny == now.y && nx == now.x) continue;
-					queue.add(new Dot(ny, nx, now.t + time));
-				}
+				Dot dot = iceSliding(now, d);
+				if (dot != null) queue.add(dot);
 			}
 		}
+	}
+
+	private static Dot iceSliding(Dot now, int d) {
+		int ny = now.y;
+		int nx = now.x;
+		int time = 0;
+		boolean flag = false;
+
+		while (true) {
+			ny += dy[d];
+			nx += dx[d];
+
+			if (isOut(ny, nx)) break;
+			if (board[ny][nx] == Hol) break;
+			if (board[ny][nx] == Rock) {
+				flag = true;
+				break;
+			}
+			if (board[ny][nx] == Exit) {
+				Min = Math.min(Min, now.t + time);
+				break;
+			}
+			time += board[ny][nx];
+		}
+
+		ny -= dy[d];
+		nx -= dx[d];
+		if (flag && !(ny == now.y && nx == now.x))
+			return new Dot(ny, nx, now.t + time);
+		return null;
 	}
 
 	private static boolean isOut(int ny, int nx) {
