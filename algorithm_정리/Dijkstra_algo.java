@@ -59,24 +59,25 @@ public class Dijkstra_algo {
         }
         System.out.println(Arrays.toString(Distances));
     }
-}
-class Node implements Comparable<Node>
-{
-    int V;
-    int weight;
-    Node(int v, int weight)
+
+    private static class Node implements Comparable<Node>
     {
-        this.V = v;
-        this.weight = weight;
-    }
+        int V;
+        int weight;
+        Node(int v, int weight)
+        {
+            this.V = v;
+            this.weight = weight;
+        }
 
-    @Override
-    public int compareTo(Node o) {
-        return Integer.compare(weight, o.weight);
-    }
+        @Override
+        public int compareTo(Node o) {
+            return Integer.compare(weight, o.weight);
+        }
 
-    @Override
-    public String toString() {
-        return this.weight+" ";
+        @Override
+        public String toString() {
+            return this.weight+" ";
+        }
     }
 }
