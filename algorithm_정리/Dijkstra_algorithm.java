@@ -63,23 +63,22 @@ public class Dijkstra_algorithm {
         }
         System.out.println(Arrays.toString(D));
     }
-}
+    private static class Edge implements Comparable<Edge> {
+        int v, weight;
 
-class Edge implements Comparable<Edge> {
-    int v, weight;
+        public Edge(int v, int weight) {
+            this.v = v;
+            this.weight = weight;
+        }
 
-    public Edge(int v, int weight) {
-        this.v = v;
-        this.weight = weight;
-    }
+        @Override
+        public int compareTo(Edge o) {
+            return Integer.compare(this.weight, o.weight);
+        }
 
-    @Override
-    public int compareTo(Edge o) {
-        return Integer.compare(this.weight, o.weight);
-    }
-
-    @Override
-    public String toString() {
-        return weight + " ";
+        @Override
+        public String toString() {
+            return weight + " ";
+        }
     }
 }
