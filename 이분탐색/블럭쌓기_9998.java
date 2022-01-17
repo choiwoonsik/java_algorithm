@@ -1,16 +1,4 @@
-/*
-5
-2 3 0 1 4
-3 3 2 3 1
-      *
-  *   *
-* *   *
-* * * *
-
-* *   *
-* * * *
-* * * * *
- */
+package 이분탐색;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,7 +31,7 @@ public class 블럭쌓기_9998 {
 
     private static void solution() {
         long left = 0;
-        long right = (long) Math.pow(10, 12);
+        long right = (long) Math.pow(10, 12) - N / 2;
         long maxBlockCount = countBlock(right);
         long minBlockCount = countBlock(left);
         long mid;
@@ -55,15 +43,11 @@ public class 블럭쌓기_9998 {
             {
                 right = mid;
                 maxBlockCount = countBlock(right);
-                // System.out.println("Mid : " + mid + ", Count : " + minBlockCount);
             } else { // 높은 곳 블럭개수가 더 작거나 같음. 높인다
                 left = mid + 1;
                 minBlockCount = countBlock(left);
-                // System.out.println("Mid : " + mid + ", Count : " + maxBlockCount);
             }
         }
-        // System.out.println("mid block count : " + right);
-        // System.out.println("Min : " + minBlockCount);
         System.out.println(minBlockCount);
     }
 
