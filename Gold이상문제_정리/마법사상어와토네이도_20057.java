@@ -1,7 +1,5 @@
 package Gold이상문제_정리;
 
-import kotlin.Pair;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
