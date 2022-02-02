@@ -35,12 +35,6 @@ public class 스위치_1395 {
 				int count = query(1, 1, S, queryLeft, queryRight);
 				answer.append(count).append("\n");
 			}
-
-//			System.out.println("======");
-//			for (int j = 1; j < S + N; j++) {
-//				System.out.print(tree[j]+" ");
-//			}
-//			System.out.println();
 		}
 
 		System.out.print(answer);
