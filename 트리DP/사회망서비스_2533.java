@@ -14,16 +14,18 @@ import java.io.*;
 4 9
 
 dp : 자신을 포함한 하위 얼리어답터의 수
-경우의 수 : 루트가 얼리어답터 vs 루트가 얼리어답터 아님
-부모가 얼리어답터? 자기는 아니여도됨
-부모가 얼리어답터가 아니다? 자기가 얼리어답터
+경우의 수 : 얼리어답터 vs 얼리어답터 아님
+
+부모가 얼리어답터 -> 자식은 얼리어답터 or 얼리어답터 아님
+부모가 얼리어답터 아님 -> 자식은 얼리어답터
  */
 public class 사회망서비스_2533 {
 	static int N;
-	static int[] dp;
-	static boolean[] isEarly;
+	static int[][] dp;
 	static boolean[] visit;
 	static ArrayList<Integer>[] adj;
+	static int EARLY = 0;
+	static int NOT_EARLY = 1;
 
 	public static void main(String[] args) throws Exception {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -31,8 +33,7 @@ public class 사회망서비스_2533 {
 
 		N = Integer.parseInt(br.readLine());
 		adj = new ArrayList[N + 1];
-		dp = new int[N + 1];
-		isEarly = new boolean[N + 1];
+		dp = new int[N + 1][2];
 		visit = new boolean[N + 1];
 
 		for (int i = 0; i < N + 1; i++) {
@@ -48,50 +49,18 @@ public class 사회망서비스_2533 {
 			adj[v].add(u);
 		}
 
-		dfsNotEarly(1);
-		System.out.println(dp[1]);
-		for (int i = 1; i <= N; i++) {
-			System.out.println(i + " : " + isEarly[i]);
-		}
-		Arrays.fill(dp, 0);
-		Arrays.fill(isEarly, false);
-		Arrays.fill(visit, false);
-
-		isEarly[1] = true;
-		dfsEarly(1);
-		System.out.println(dp[1]);
-		for (int i = 1; i <= N; i++) {
-			System.out.println(i + " : " + isEarly[i]);
-		}
+		dfs(1);
+		System.out.println(Math.min(dp[1][NOT_EARLY], dp[1][EARLY]));
 	}
 
-	private static void dfsEarly(int root) {
+	private static void dfs(int root) {
 		visit[root] = true;
-		if (isEarly[root]) dp[root] += 1;
-
+		dp[root][EARLY] += 1;
 		for (Integer child : adj[root]) {
 			if (visit[child]) continue;
-			visit[child] = true;
-			if (!isEarly[root]) {
-				isEarly[child] = true;
-			}
-			dfsNotEarly(child);
-			dp[root] += dp[child];
-		}
-	}
-
-	private static void dfsNotEarly(int root) {
-		visit[root] = true;
-		if (isEarly[root]) dp[root] += 1;
-
-		for (Integer child : adj[root]) {
-			if (visit[child]) continue;
-			visit[child] = true;
-			if (!isEarly[root]) {
-				isEarly[child] = true;
-			}
-			dfsNotEarly(child);
-			dp[root] += dp[child];
+			dfs(child);
+			dp[root][EARLY] += Math.min(dp[child][EARLY], dp[child][NOT_EARLY]);
+			dp[root][NOT_EARLY] += dp[child][EARLY];
 		}
 	}
 }
