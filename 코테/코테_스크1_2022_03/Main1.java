@@ -1,8 +1,6 @@
-package sk_2022_3;
+package 코테.코테_스크1_2022_03;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class Main1 {

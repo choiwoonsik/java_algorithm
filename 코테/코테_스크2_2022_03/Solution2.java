@@ -1,4 +1,4 @@
-package 코테_스크;
+package 코테.코테_스크2_2022_03;
 
 import java.util.*;
 

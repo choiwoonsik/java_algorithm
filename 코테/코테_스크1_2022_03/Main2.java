@@ -1,4 +1,4 @@
-package sk_2022_3;
+package 코테.코테_스크1_2022_03;
 
 import java.util.Arrays;
 

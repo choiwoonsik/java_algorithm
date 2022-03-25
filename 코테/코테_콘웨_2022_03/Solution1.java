@@ -1,4 +1,4 @@
-package 코테_콘웨;
+package 코테.코테_콘웨_2022_03;
 
 class Solution1 {
 
