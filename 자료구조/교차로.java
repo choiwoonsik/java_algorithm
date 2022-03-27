@@ -71,7 +71,7 @@ public class 교차로 {
 		int curTime = startMinTime;
 
 		while (!aQueue.isEmpty() || !bQueue.isEmpty() || !cQueue.isEmpty() || !dQueue.isEmpty()) {
-			
+
 			// 일단 모든 라인의 입차 시간을 다 최대로 변경
 			int aTime = MAX;
 			int bTime = MAX;
