@@ -56,7 +56,6 @@ public class 트리의기둥과가지_20924 {
 			GR = R;
 			GR_H = 0;
 		}
-		System.out.println(GR);
 		findLongestLine(GR, 0);
 
 		System.out.print(GR_H + " " + L_H);
@@ -70,7 +69,7 @@ public class 트리의기둥과가지_20924 {
 		}
 
 		for (Node child : adj[root]) {
-			if (visited[root]) continue;
+			if (visited[child.here]) continue;
 			findLongestLine(child.here, d + child.dist);
 		}
 	}
