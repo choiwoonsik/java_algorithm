@@ -23,8 +23,6 @@ public class 양구출작전_16437 {
 	static int N;
 	static ArrayList<Node>[] adj;
 	static long[] dp;
-	static int S = 1;
-	static int W = 0;
 
 	public static void main(String[] args) throws Exception {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -56,10 +54,6 @@ public class 양구출작전_16437 {
 	}
 
 	private static void dfs(int node) {
-//		if (node != 1) {
-//			dp[node] += info[node].count;
-//		}
-
 		for (Node child : adj[node]) {
 			dp[child.here] = child.count;
 			dfs(child.here);
