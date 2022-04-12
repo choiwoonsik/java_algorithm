@@ -81,18 +81,19 @@ public class 사과나무_2233 {
 	}
 
 	private static void makeTree() {
-		int idx = 1;
-		int cur = 0;
+		int curNode = 1;
+		int parentNode = 0;
+
 		for (int i = 1; i < bit.length(); i++) {
 			if (bit.charAt(i) == '0') {
-				depth[idx] = depth[cur] + 1;
-				parent[idx] = cur;
-				intOutRecord[idx][IN] = i;
-				cur = idx;
-				idx++;
+				depth[curNode] = depth[parentNode] + 1;
+				parent[curNode] = parentNode;
+				intOutRecord[curNode][IN] = i;
+				parentNode = curNode;
+				curNode++;
 			} else {
-				intOutRecord[cur][OUT] = i;
-				cur = parent[cur];
+				intOutRecord[parentNode][OUT] = i;
+				parentNode = parent[parentNode];
 			}
 		}
 	}
