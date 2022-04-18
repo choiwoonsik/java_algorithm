@@ -50,7 +50,7 @@ public class 전깃줄_2565 {
 			}
 		}
 
-		System.out.println(list.size());
+		System.out.println(N - list.size());
 	}
 
 	private static int binarySearch(int cur) {
