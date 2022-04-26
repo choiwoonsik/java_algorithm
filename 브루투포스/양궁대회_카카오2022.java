@@ -27,7 +27,6 @@ public class 양궁대회_카카오2022 {
 
 		public int[] solution(int n, int[] info) {
 			apeachSelect = info.clone();
-			max = -1;
 			maxTarget = new int[11];
 
 			int[] ryanSelect = new int[11];
