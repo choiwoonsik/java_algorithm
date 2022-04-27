@@ -42,7 +42,7 @@ public class 태상이의훈련소생활_19951 {
 		}
 
 		StringBuilder answer = new StringBuilder();
-		
+
 		for (int i = 1; i < N; i++) {
 			dp[i] += dp[i - 1];
 		}
