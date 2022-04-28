@@ -1,3 +1,5 @@
+package 이분탐색;
+
 import java.util.*;
 
 public class 순위검색_카카오2021 {
