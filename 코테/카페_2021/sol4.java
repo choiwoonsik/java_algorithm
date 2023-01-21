@@ -150,7 +150,7 @@ public class sol4 {
 			long remainAge;
 			int wireLen;
 
-			public Node(int nodeNumber, long remainAge, int wireLen) {
+			private Node(int nodeNumber, long remainAge, int wireLen) {
 				this.nodeNumber = nodeNumber;
 				this.remainAge = remainAge;
 				this.wireLen = wireLen;
