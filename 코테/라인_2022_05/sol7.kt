@@ -5,7 +5,7 @@ import java.util.*
 class sol7 {
     fun solution() {
         val pq = PriorityQueue(Comparator { f1: Flower, f2: Flower ->
-            if (f1.end != f2.end) return@Comparator Integer.compare(f1.end, f2.end)
+            if (f1.end != f2.end) return@Comparator f1.end.compareTo(f2.end)
             else return@Comparator Integer.compare(f1.start, f2.start)
         })
 
