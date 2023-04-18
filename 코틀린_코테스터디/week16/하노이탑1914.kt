@@ -1,4 +1,4 @@
-package 코틀린_코테스터디.week00
+package 코틀린_코테스터디.week16
 
 import java.math.BigInteger
 
