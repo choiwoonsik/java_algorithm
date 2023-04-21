@@ -1,4 +1,4 @@
-package 코틀린_코테스터디.토스기출_20
+package 코틀린_코테스터디.토스_20
 
 import kotlin.math.ceil
 

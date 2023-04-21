@@ -5,8 +5,8 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.util.*
 
-var N = 0
-var M = 0
+private var N = 0
+private var M = 0
 private lateinit var p: IntArray
 private var pq = PriorityQueue(Comparator.comparingInt { s: Edge -> s.span })
 

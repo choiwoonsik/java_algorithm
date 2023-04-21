@@ -2,6 +2,7 @@ package 코틀린_코테스터디.week16
 
 import java.util.PriorityQueue
 import java.util.StringTokenizer
+import java.util.TreeMap
 
 class Solution7662 {
     /*
@@ -14,6 +15,7 @@ class Solution7662 {
         private lateinit var pqAsc: PriorityQueue<Int>
         private lateinit var pqDesc: PriorityQueue<Int>
         private lateinit var map: MutableMap<Int, Int>
+        private var COUNT: Int = 0
         private var N: Int = 0
         private val sb = StringBuilder()
     }
@@ -27,6 +29,7 @@ class Solution7662 {
             pqAsc = PriorityQueue()
             pqDesc = PriorityQueue(Comparator.reverseOrder())
             map = mutableMapOf()
+            COUNT = 0
             go()
         }
 
@@ -58,8 +61,7 @@ class Solution7662 {
                 if (map[t]!! != 0) {
                     top = t
                     break
-                }
-                else continue
+                } else continue
             }
 
             val bottom: Int
@@ -68,8 +70,7 @@ class Solution7662 {
                 if (map[b]!! != 0) {
                     bottom = b
                     break
-                }
-                else continue
+                } else continue
             }
             sb.append("$top $bottom")
         }
@@ -77,7 +78,7 @@ class Solution7662 {
     }
 
     private fun empty(): Boolean {
-        return map.values.any { it > 0 }.not()
+        return COUNT == 0
     }
 
     private fun pollMin() {
@@ -89,6 +90,7 @@ class Solution7662 {
         }
         val top = pqAsc.poll()
         map[top] = map[top]!! - 1
+        COUNT--
     }
 
     private fun pollMax() {
@@ -100,6 +102,7 @@ class Solution7662 {
         }
         val top = pqDesc.poll()
         map[top] = map[top]!! - 1
+        COUNT--
     }
 
     private fun insert(num: Int) {
@@ -107,22 +110,10 @@ class Solution7662 {
         pqDesc.add(num)
         if (map[num] == null) map[num] = 1
         else map[num] = map[num]!! + 1
+        COUNT++
     }
 }
 
 fun main() {
     Solution7662().solution()
 }
-/*
-1
-9
-I 36
-I 37
-I 38
-D 1
-D 1
-I 39
-I 40
-D -1
-D -1
- */

@@ -20,6 +20,8 @@ class Solution1914 {
         }
     }
 
+    // 1, 3, 7, 15, 31, 63
+    // 2 4 8 16
     fun find(n: Int): String {
         return (BigInteger.valueOf(2).pow(n) - BigInteger.valueOf(1)).toString()
     }
