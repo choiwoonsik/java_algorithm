@@ -43,7 +43,7 @@ class Solution11049 {
                 for (c in s until s + r) {
                     // s ~ s+r 범위의 최소 곱셈수 갱신
                     dp[s][s + r] = min(
-                        // (s~r 행렬 곱셈수) + (c+1~s+r 행렬 곱셈수) + (s~r * c+1~s+r 행렬의 곱셈수)
+                        // (s~c 행렬 곱셈수) + (c+1~s+r 행렬 곱셈수) + (s~c * c+1~s+r 행렬의 곱셈수)
                         dp[s][s + r], dp[s][c] + dp[c + 1][s + r] + matrix[s][R] * matrix[c][C] * matrix[s + r][C]
                     )
                 }
