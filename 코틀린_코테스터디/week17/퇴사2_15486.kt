@@ -31,7 +31,6 @@ class Solution25486 {
             val p = days[day].second
 
             if (day >= 2) dp[day - 1] = max(dp[day - 1], dp[day - 2])
-            dp[day] = max(dp[day], dp[day - 1])
 
             val nextDay = day + t - 1
             if (nextDay > n) continue
