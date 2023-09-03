@@ -8,15 +8,37 @@ public class Main2 {
 		int[][] solution = sol.solution(9, false);
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				System.out.print(solution[i][j]+" ");
+				System.out.print(solution[i][j]+"\t");
 			}
 			System.out.println();
 		}
 
+		System.out.println("====================================");
+
+		solution = sol.solution(9, true);
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				System.out.print(solution[i][j]+"\t");
+			}
+			System.out.println();
+		}
+
+		System.out.println("====================================");
+
+		solution = sol.solution(8, true);
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				System.out.print(solution[i][j]+"\t");
+			}
+			System.out.println();
+		}
+
+		System.out.println("====================================");
+
 		solution = sol.solution(1, false);
 		for (int i = 0; i < 1; i++) {
 			for (int j = 0; j < 1; j++) {
-				System.out.print(solution[i][j]+" ");
+				System.out.print(solution[i][j]+"\t");
 			}
 			System.out.println();
 		}

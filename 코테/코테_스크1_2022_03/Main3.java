@@ -10,12 +10,9 @@ public class Main3 {
 		System.out.println(answer);
 	}
 
-	private static int[][] dp;
-	private static int D = 10000019;
-
 	static class Solution {
 		public int solution(int width, int height, int[][] diagonals) {
-			dp = new int[height + 1][width + 1];
+			int[][] dp = new int[height + 1][width + 1];
 
 			for (int y = 0; y <= height; y++) {
 				dp[y][0] = 1;
@@ -25,9 +22,10 @@ public class Main3 {
 				dp[0][x] = 1;
 			}
 
+			int d = 10000019;
 			for (int y = 1; y <= height; y++) {
 				for (int x = 1; x <= width; x++) {
-					dp[y][x] = (dp[y - 1][x] + dp[y][x - 1]) % D;
+					dp[y][x] = (dp[y - 1][x] + dp[y][x - 1]) % d;
 				}
 			}
 
@@ -41,14 +39,14 @@ public class Main3 {
 
 				int beforeLeft = dp[leftDot.y][leftDot.x];
 				int afterLeft = dp[height - downDot.y][width - downDot.x];
-				int leftCount = (int) (((long) beforeLeft * afterLeft) % D);
+				int leftCount = (int) (((long) beforeLeft * afterLeft) % d);
 
 				int beforeDown = dp[downDot.y][downDot.x];
 				int afterDown = dp[height - leftDot.y][width - leftDot.x];
-				int downCount = (int) (((long) beforeDown * afterDown) % D);
+				int downCount = (int) (((long) beforeDown * afterDown) % d);
 
-				total += (leftCount + downCount) % D;
-				total %= D;
+				total += (leftCount + downCount) % d;
+				total %= d;
 			}
 			return total;
 		}

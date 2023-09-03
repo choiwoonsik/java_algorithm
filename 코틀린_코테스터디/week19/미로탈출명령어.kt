@@ -44,7 +44,7 @@ class Solution미래탈출명령어 {
             if (ny < 0 || ny > N || nx < 0 || nx > M) continue
             if (!canGo(ny, nx, count)) continue
             if (count > 0) dfs(ny, nx, count - 1, history + dir[d])
-            if (cy == ey && cx == ex && count == 0) {
+            if (ny == ey && nx == ex && count == 0) {
                 stop = true
                 answer = history + dir[d]
                 return
