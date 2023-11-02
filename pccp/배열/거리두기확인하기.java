@@ -31,13 +31,13 @@ class Solution_거리두기확인하기 {
         int[] answer = new int[places.length];
 
         for (int i = 0; i < places.length; i++) {
-            answer[i] = isDivide(places[i]);
+            answer[i] = isDistanced(places[i]);
         }
 
         return answer;
     }
 
-    private int isDivide(String[] place) {
+    private int isDistanced(String[] place) {
         searchPerson(place);
         if (personQueue.isEmpty()) return OK;
 
