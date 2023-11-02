@@ -2,6 +2,8 @@ package 다이나믹프로그래밍;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 public class 쉬운계단수_10844 {
 	static int N;
@@ -31,7 +33,25 @@ public class 쉬운계단수_10844 {
 				}
 			}
 		}
+		Dot[] dots = new Dot[100];
+		for (int i = 0; i < 100; i++) {
+			dots[i] = new Dot(i, i + 1);
+		}
+		Map<Integer, List<Dot>> collect = Arrays.stream(dots).collect(Collectors.groupingBy(it -> it.y));
+		int[] array = Arrays.stream(dots).mapToInt(it -> it.y + it.x).toArray();
+		List<Dot> list = Arrays.asList(dots);
+		Arrays.fill(array, 1);
+
 
 		System.out.print(Arrays.stream(dp[N]).sum() % 1000000000);
+	}
+
+	private static class Dot {
+		int y;
+		int x;
+		public Dot(int y, int x) {
+			this.y = y;
+			this.x = x;
+		}
 	}
 }
