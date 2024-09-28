@@ -19,6 +19,8 @@ private class Test2 {
         val sorted = arr.sorted()
         bfs()
 
+        mutableListOf(1).distinct().sorted().toIntArray()
+
         return stokeCount
     }
 

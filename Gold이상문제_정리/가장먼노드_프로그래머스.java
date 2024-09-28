@@ -1,6 +1,9 @@
 package Gold이상문제_정리;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class 가장먼노드_프로그래머스 {
 
